@@ -1,0 +1,1280 @@
+<!doctype html>
+<html>
+	<head>
+
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width, user-scalable=no, minimal-ui'>
+
+  <title>Richard Hendrik</title>
+
+	<style>
+	/* Base styles */
+
+/* Typography */
+
+:root {
+  --font-family-sans: "Arial", "Helvetica Neue", sans-serif;
+
+  --ratio: 1.33;
+  --base-size: 12px;
+  --h1-size: calc(var(--base-size) * var(--ratio) * var(--ratio) * var(--ratio) * var(--ratio));
+  --h2-size: calc(var(--base-size) * var(--ratio) * var(--ratio) * var(--ratio));
+  --h3-size: calc(var(--base-size) * var(--ratio) * var(--ratio));
+  --h4-size: calc(var(--base-size) * var(--ratio));
+  --h5-size: calc(var(--base-size));
+  --h6-size: calc(var(--base-size) / var(--ratio));
+
+  --header-bg-color: #74ABE2;
+  --header-bg-color-secondary: #5563DE;
+  --header-bg-color-tertiary: #8E44AD;
+}
+
+/* Background Effect */
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+body {
+  background: linear-gradient(
+      120deg,
+      var(--header-bg-color),
+      var(--header-bg-color-secondary),
+      var(--header-bg-color-tertiary)
+  );
+  font-family: var(--font-family-sans);
+  font-size: var(--base-size);
+  line-height: 1.4;
+  margin: 40px 0;
+  color: #000;
+}
+
+em {
+  color: #333;
+  font-style: italic;
+}
+
+p {
+  line-height: 1.4;
+}
+
+ul {
+  margin-bottom: 0;
+}
+
+li {
+  margin-bottom: 1px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #2077b2;
+}
+
+.normal-weight {
+  font-weight: normal;
+}
+
+/* Resume container */
+.resume {
+  margin: 0 auto;
+  max-width: 700px;
+  padding: 40px 30px;
+  background: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 4px #aaa;
+  -webkit-box-shadow: 2px 2px 4px #aaa;
+}
+
+.personName {
+  font-weight: bold;
+}
+
+/* Section styling */
+.sectionName {
+  text-align: left;
+  text-transform: uppercase;
+  font-size: var(--h4-size);
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.sectionLine {
+  border-bottom: 1px solid #676767;
+  margin-bottom: 8px;
+  width: 100%;
+}
+
+.sectionLineSoft {
+  border-bottom: 1px solid #eeeeee;
+  margin-bottom: 8px;
+  width: 100%;
+}
+
+.line-connected {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  line-height: 1.1;
+}
+
+.line-connected .line {
+  flex: 1;
+  border-bottom: 1px solid #676767;
+  height: 0px;
+}
+
+.line-connected .line-soft {
+  flex: 1;
+  border-bottom: 1px solid #eeeeee;
+  height: 0px;
+}
+
+.sectionContent {
+  width: 100%;
+  margin-top: 6px;
+}
+
+/* Add spacing after each section except the last one */
+.resume > div:not(:last-child) {
+  margin-bottom: 5px;
+}
+
+/* Common block elements */
+.sectionContent > div {
+  page-break-inside: avoid;
+  margin-bottom: 4px;
+}
+
+/* Common content elements */
+.blockHeader {
+  margin-bottom: 2px;
+}
+
+.title {
+  font-weight: 500;
+  font-size: var(--h4-size);
+}
+
+.subtitle {
+  font-weight: 700;
+  font-size: var(--h5-size);
+}
+
+.date {
+  float: right;
+  font-weight: 500;
+  font-size: var(--h4-size);
+}
+
+.location {
+  float: right;
+  font-style: oblique;
+}
+
+.position, .degree {
+  margin-top: 1px;
+  margin-bottom: 2px;
+}
+
+.website {
+  margin-bottom: 5px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.summary {
+  margin-top: 2px;
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+
+/* Lists */
+.sectionContent ul {
+  padding-left: 20px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  list-style-type: disc;
+}
+
+.sectionContent li::marker {
+  font-size: var(--h4-size);
+  vertical-align: middle;
+  line-height: 1;
+}
+
+/* Skill lists - special case for inline display */
+.skillBlock ul li {
+  display: inline-block;
+  margin-right: 12px;
+  margin-bottom: 1px;
+}
+
+/* Separators */
+.separator {
+  height: 1px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.divider {
+  display: inline-block;
+  width: 1px;
+  height: 24px;     /* adjust this for length */
+  background-color: #999;
+  margin: 0 8px;
+  vertical-align: middle;
+}
+
+/* Header elements */
+.nameBlock {
+  font-size: var(--h1-size);
+  text-align: left;
+  margin-bottom: 0;
+}
+
+.name {
+  font-weight: 600;
+}
+
+.label {
+  font-size: 16px;
+  margin-bottom: 0;
+}
+
+.basicsBlock {
+  text-align: left;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+.contactBlock {
+  font-size: var(--h4-size);
+}
+
+/* Education elements */
+.coursesBlock {
+  margin-top: 2px;
+}
+
+.coursesList {
+  width: 28%;
+  vertical-align: top;
+  display: inline-block;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 15px;
+}
+
+.course {
+  margin-bottom: 0;
+  line-height: 1.2;
+}
+
+.gpa {
+  margin-bottom: 5px;
+  font-size: var(--h5-size);
+}
+
+.select-all {
+  user-select: none; /* disable text selection */
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  display: inline-block;
+  width: 100%;
+}
+
+.copy-wrapper {
+  position: relative;
+  display: inline-block; /* shrink-wrap to content */
+}
+
+.copy-wrapper:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.copy-wrapper:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.copy-wrapper .copy-btn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;        /* hide the button visually */
+  cursor: pointer;   /* show pointer */
+  border: none;      /* remove button styling */
+  background: none;  /* remove background */
+  padding: 0;
+  margin: 0;
+}
+
+.copy-popup-global {
+  position: fixed;           
+  top: 10px;                 
+  left: 50%;                 
+  transform: translateX(-50%); 
+  max-width: 300px;          
+  padding: 4px 8px;          
+  background: rgba(0,0,0,0.8);
+  color: white;
+  font-size: 14px;
+  text-align: center;
+  border-radius: 4px;
+  pointer-events: none;      
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 9999;
+
+  display: -webkit-box;      /* required for line clamp */
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;    /* max 4 lines */
+  overflow: hidden;
+  word-wrap: break-word;     /* wrap words if needed */
+}
+
+.copy-popup-global.show {
+  opacity: 1;
+}
+
+
+
+
+/* Media Queries */
+@media only screen and (max-width: 40em) {
+  body {
+    margin: 0;
+    font-size: 14px;
+  }
+  .resume {
+    margin: 0 auto;
+    max-width: 600px;
+    padding: 0.5em 1em;
+    border: none;
+  }
+  .sectionContent {
+    width: 100%;
+  }
+  .sectionContent .date {
+    padding-right: 2em;
+  }
+  .sectionName {
+    width: auto;
+  }
+  .nameBlock {
+    font-size: 20px;
+  }
+  .basicsBlock {
+    font-size: 14px;
+  }
+}
+
+@media print {
+  body {
+    background: #FFFFFF;
+  }
+  .resume {
+    margin: 0 auto;
+    max-width: 700px;
+    padding: 0px 0px;
+    border: 0px;
+    background: #fff;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+  }
+
+  a {
+    color: black;
+  }
+}
+	</style>
+
+	</head>
+	<body>
+
+	<div class='resume'>
+    <div class="copy-popup-global"></div>
+    <div class='nameBlock'>
+      <span class="copy-wrapper">
+        <span class='select-all'>Richard</span>
+        <button class="copy-btn" data-copy-text="Richard"></button>
+      </span>
+      <span class="copy-wrapper">
+        <span class='select-all'>R. R.</span>
+        <button class="copy-btn" data-copy-text="R. R."></button>
+      </span>
+      <span class="copy-wrapper">
+        <span class='select-all'>Hendrik</span>
+        <button class="copy-btn" data-copy-text="Hendrik"></button>
+      </span>
+
+      <div class="copy-wrapper">
+          <div class='line-connected'>
+            <div class="select-all">
+              <span class='label'>Software Developer</span><span class='line-soft'></span>
+            </div>
+          </div>
+        <button class="copy-btn" data-copy-text="Software Developer"></button>
+      </div>
+    </div>
+
+
+    <div class='basicsBlock'>
+      <div class='contactBlock'>
+        <span class="copy-wrapper">
+          <span class='select-all email'>rhendriks@mail.com</span>
+          <button class="copy-btn" data-copy-text="rhendriks@mail.com"></button>
+        </span>
+
+          <span class='divider'>|</span>
+          <span class="copy-wrapper">
+            <span class='select-all phone'>(123) 456-7890</span>
+            <button class="copy-btn" data-copy-text="(123) 456-7890"></button>
+          </span>
+
+        <span class='divider'>|</span>
+
+          <span class="copy-wrapper">
+            <span class='select-all'>
+              
+              San Francisco
+              , California
+              
+            </span>
+            <button class="copy-btn" data-copy-text="San Francisco California "></button>
+          </span>
+
+        <span class='divider'>|</span>
+
+              <span class='url'>
+                <span class="copy-wrapper">
+                  <span>
+                    GitPlace
+                    <span class='select-all'>https://gitplace.com/rhendricks</span>
+                    
+                  </span>
+                  <button class="copy-btn" data-copy-text="https://gitplace.com/rhendricks"></button>
+                </span>
+              </span>
+              <span class='divider'>|</span>
+              <span class='url'>
+                <span class="copy-wrapper">
+                  <span>
+                    LinkedOn
+                    <span class='select-all'>https://linkedon.com/richardh</span>
+                    
+                  </span>
+                  <button class="copy-btn" data-copy-text="https://linkedon.com/richardh"></button>
+                </span>
+              </span>
+              
+    </div>
+    
+  <div class='sectionLineSoft'></div>
+
+    <div class='summaryBlock'>
+      <div class='sectionName'>
+        <span>SUMMARY</span>
+      </div>
+      <div class='sectionLine'></div>
+      <div class='sectionContent'>
+        <span class="copy-wrapper">
+          <div class='select-all'>Richard hails from [tulsa](https://en.wikipedia.org/wiki/Tulsa,_Oklahoma). Holds a bachelor&#x27;s degree from the *University of Oklahoma* and a master&#x27;s degree from *Stanford University*. (Go Sooners) Before starting **Pied Piper**, he worked for **Hooli** as a part time software developer. While his work focuses on *applied information theory*, mostly *optimizing lossless compression* schema of both the length-limited and adaptive variants, his non-work interests range widely, everything from *quantum computing* to *chaos theory*. He could tell you about it, but THAT would NOT be a *length-limited* conversation!</div>
+          <button class="copy-btn" data-copy-text="Richard hails from [tulsa](https://en.wikipedia.org/wiki/Tulsa,_Oklahoma). Holds a bachelor's degree from the *University of Oklahoma* and a master's degree from *Stanford University*. (Go Sooners) Before starting **Pied Piper**, he worked for **Hooli** as a part time software developer. While his work focuses on *applied information theory*, mostly *optimizing lossless compression* schema of both the length-limited and adaptive variants, his non-work interests range widely, everything from *quantum computing* to *chaos theory*. He could tell you about it, but THAT would NOT be a *length-limited* conversation!"></button>
+        </span>
+      </div>
+    </div>
+
+
+  <div class='workBlock'>
+    <div class='sectionName'>
+      <div class='line-connected'>
+        <span>EXPERIENCE</span><span class='line'></span>
+      </div>
+    </div>
+
+    <div class='sectionContent'>
+			<div class="jobBlock">
+	      <div class='blockHeader'>
+          <div class='line-connected'>
+              <div class="copy-wrapper">
+                <span class='select-all title'>Facebook</span>
+                <button class="copy-btn" data-copy-text="Facebook"></button>
+              </div>
+
+            <span class='line-soft'></span>
+
+              <span class="copy-wrapper date">
+                <span class='select-all'>
+                  Nov. 2016 &ndash; Present
+                </span>
+                <button class="copy-btn" data-copy-text="Nov. 2016 - Present"></button>
+              </span>
+          </div>
+            
+
+          <span class='subtitle'>
+              <span class="copy-wrapper">
+                <span class='select-all'>Principal Software Engineer</span>
+                <button class="copy-btn" data-copy-text="Principal Software Engineer"></button>
+              </span>
+          </span>
+
+          <span class='location'>
+              <span class="copy-wrapper">
+                <span class='select-all'>California, United States</span>
+                <button class="copy-btn" data-copy-text="California, United States"></button>
+              </span>
+          </span>
+        
+            <div class="copy-wrapper">
+              <div class='select-all summary'>*Facebook* is an American social media conglomerate corporation based in *Menlo Park, California*. It was founded by **Mark Zuckerberg**, along with his fellow roommates and students at Harvard College, who were Eduardo Saverin, Andrew McCollum, Dustin Moskovitz and Chris Hughes, originally as TheFacebook.com—today's Facebook, a popular global social networking website.</div>
+              <button class="copy-btn" data-copy-text="*Facebook* is an American social media conglomerate corporation based in *Menlo Park, California*. It was founded by **Mark Zuckerberg**, along with his fellow roommates and students at Harvard College, who were Eduardo Saverin, Andrew McCollum, Dustin Moskovitz and Chris Hughes, originally as TheFacebook.com—today's Facebook, a popular global social networking website."></button>
+            </div>
+
+            <div class="copy-wrapper">
+              <div class="select-all">
+                <ul class='highlights'>
+                    <li>Vitae purus faucibus ornare suspendisse</li>
+                      <ul>
+                          <li>Ut enim blandit volutpat maecenas</li>
+                      </ul>
+                    <li>Volutpat blandit aliquam</li>
+                    <li>Ultrices gravida dictum fusce ut placerat</li>
+                    <li>Elit duis tristique sollicitudin nibh</li>
+                    <li>Habitant morbi tristique senectus et netus</li>
+                    <li>Luctus accumsan tortor posuere ac ut consequat</li>
+                </ul>
+              </div>
+              <button class="copy-btn" data-copy-text="Vitae purus faucibus ornare suspendisse Volutpat blandit aliquam Ultrices gravida dictum fusce ut placerat Elit duis tristique sollicitudin nibh Habitant morbi tristique senectus et netus Luctus accumsan tortor posuere ac ut consequat "></button>
+            </div>
+
+            <div class='separator'></div>
+
+			</div>
+			<div class="jobBlock">
+	      <div class='blockHeader'>
+          <div class='line-connected'>
+              <div class="copy-wrapper">
+                <span class='select-all title'>Amazon</span>
+                <button class="copy-btn" data-copy-text="Amazon"></button>
+              </div>
+
+            <span class='line-soft'></span>
+
+              <span class="copy-wrapper date">
+                <span class='select-all'>
+                  Jul. 2017 &ndash; Nov. 2016
+                </span>
+                <button class="copy-btn" data-copy-text="Jul. 2017 - Nov. 2016"></button>
+              </span>
+          </div>
+            
+
+          <span class='subtitle'>
+              <span class="copy-wrapper">
+                <span class='select-all'>Senior Software Engineer</span>
+                <button class="copy-btn" data-copy-text="Senior Software Engineer"></button>
+              </span>
+          </span>
+
+          <span class='location'>
+              <span class="copy-wrapper">
+                <span class='select-all'>Washington, United States</span>
+                <button class="copy-btn" data-copy-text="Washington, United States"></button>
+              </span>
+          </span>
+        
+            <div class="copy-wrapper">
+              <div class='select-all summary'>*Amazon.com* is an American multinational technology company based in *Seattle, Washington*, which focuses on e-commerce, cloud computing, digital streaming, and artificial intelligence. The company has been referred to as *one of the most influential economic and cultural forces in the world*, as well as the world's most valuable brand.</div>
+              <button class="copy-btn" data-copy-text="*Amazon.com* is an American multinational technology company based in *Seattle, Washington*, which focuses on e-commerce, cloud computing, digital streaming, and artificial intelligence. The company has been referred to as *one of the most influential economic and cultural forces in the world*, as well as the world's most valuable brand."></button>
+            </div>
+
+            <div class="copy-wrapper">
+              <div class="select-all">
+                <ul class='highlights'>
+                    <li>Massa id neque aliquam vestibulum morbi</li>
+                    <li>Consectetur adipiscing elit</li>
+                    <li>Sed do eiusmod tempor incididunt ut labore</li>
+                    <li>Mattis vulputate enim nulla aliquet porttitor</li>
+                    <li>incididunt ut labore et dolore magna aliqua</li>
+                    <li>Lacus luctus accumsan tortor</li>
+                </ul>
+              </div>
+              <button class="copy-btn" data-copy-text="Massa id neque aliquam vestibulum morbi Consectetur adipiscing elit Sed do eiusmod tempor incididunt ut labore Mattis vulputate enim nulla aliquet porttitor incididunt ut labore et dolore magna aliqua Lacus luctus accumsan tortor "></button>
+            </div>
+
+            <div class='separator'></div>
+
+			</div>
+			<div class="jobBlock">
+	      <div class='blockHeader'>
+          <div class='line-connected'>
+              <div class="copy-wrapper">
+                <span class='select-all title'>Netflix</span>
+                <button class="copy-btn" data-copy-text="Netflix"></button>
+              </div>
+
+            <span class='line-soft'></span>
+
+              <span class="copy-wrapper date">
+                <span class='select-all'>
+                  Feb. 2010 &ndash; Jul. 2015
+                </span>
+                <button class="copy-btn" data-copy-text="Feb. 2010 - Jul. 2015"></button>
+              </span>
+          </div>
+            
+
+          <span class='subtitle'>
+              <span class="copy-wrapper">
+                <span class='select-all'>Junior Software Engineer</span>
+                <button class="copy-btn" data-copy-text="Junior Software Engineer"></button>
+              </span>
+          </span>
+
+          <span class='location'>
+              <span class="copy-wrapper">
+                <span class='select-all'>California, United States</span>
+                <button class="copy-btn" data-copy-text="California, United States"></button>
+              </span>
+          </span>
+        
+            <div class="copy-wrapper">
+              <div class='select-all summary'>*Netflix* is an American over-the-top content platform and production company headquartered in *Los Gatos, California*. Netflix was founded in 1997 by **Reed Hastings** and **Marc Randolph** in *Scotts Valley, California*. The company's primary business is a subscription-based streaming service offering online streaming from a library of films and television series, including those produced in-house.</div>
+              <button class="copy-btn" data-copy-text="*Netflix* is an American over-the-top content platform and production company headquartered in *Los Gatos, California*. Netflix was founded in 1997 by **Reed Hastings** and **Marc Randolph** in *Scotts Valley, California*. The company's primary business is a subscription-based streaming service offering online streaming from a library of films and television series, including those produced in-house."></button>
+            </div>
+
+            <div class="copy-wrapper">
+              <div class="select-all">
+                <ul class='highlights'>
+                    <li>Posuere sollicitudin aliquam ultrices</li>
+                    <li>Porttitor rhoncus dolor purus</li>
+                    <li>Aliquam sem et tortor consequat</li>
+                    <li>Pellentesque dignissim enim sit</li>
+                    <li>Hendrerit dolor magna eget est</li>
+                </ul>
+              </div>
+              <button class="copy-btn" data-copy-text="Posuere sollicitudin aliquam ultrices Porttitor rhoncus dolor purus Aliquam sem et tortor consequat Pellentesque dignissim enim sit Hendrerit dolor magna eget est "></button>
+            </div>
+
+            <div class='separator'></div>
+
+			</div>
+			<div class="jobBlock">
+	      <div class='blockHeader'>
+          <div class='line-connected'>
+              <div class="copy-wrapper">
+                <span class='select-all title'>Google</span>
+                <button class="copy-btn" data-copy-text="Google"></button>
+              </div>
+
+            <span class='line-soft'></span>
+
+              <span class="copy-wrapper date">
+                <span class='select-all'>
+                  Jul. 2009 &ndash; Feb. 2010
+                </span>
+                <button class="copy-btn" data-copy-text="Jul. 2009 - Feb. 2010"></button>
+              </span>
+          </div>
+            
+
+          <span class='subtitle'>
+              <span class="copy-wrapper">
+                <span class='select-all'>Software Engineer Intern</span>
+                <button class="copy-btn" data-copy-text="Software Engineer Intern"></button>
+              </span>
+          </span>
+
+          <span class='location'>
+              <span class="copy-wrapper">
+                <span class='select-all'>California, United States</span>
+                <button class="copy-btn" data-copy-text="California, United States"></button>
+              </span>
+          </span>
+        
+            <div class="copy-wrapper">
+              <div class='select-all summary'>*Google* is an American multinational technology company that specializes in Internet-related services and products, which include online advertising technologies, a search engine, cloud computing, software, and hardware. It is considered one of the Big Five technology companies in the U.S. information technology industry, alongside Amazon, Facebook, Apple, and Microsoft.</div>
+              <button class="copy-btn" data-copy-text="*Google* is an American multinational technology company that specializes in Internet-related services and products, which include online advertising technologies, a search engine, cloud computing, software, and hardware. It is considered one of the Big Five technology companies in the U.S. information technology industry, alongside Amazon, Facebook, Apple, and Microsoft."></button>
+            </div>
+
+            <div class="copy-wrapper">
+              <div class="select-all">
+                <ul class='highlights'>
+                    <li>Ut pharetra sit amet aliquam id diam</li>
+                    <li>Vitae congue eu consequat ac</li>
+                    <li>Cursus sit amet dictum sit amet</li>
+                </ul>
+              </div>
+              <button class="copy-btn" data-copy-text="Ut pharetra sit amet aliquam id diam Vitae congue eu consequat ac Cursus sit amet dictum sit amet "></button>
+            </div>
+
+
+			</div>
+    </div>
+  </div>
+
+    <div class='projects'>
+      <div class='sectionName'>
+        <span>PROJECTS</span>
+      </div>
+      <div class='sectionLine'></div>
+      <div class='sectionContent'>
+          <div class='projectBlock'>
+
+            <div class="copy-wrapper">
+                <a href='https://deno.land/'>
+                  <span class='select-all normal-weight'>Deno <em>(https://deno.land/)</em></span>
+                </a>
+              <button class="copy-btn" data-copy-text="Deno (https://deno.land/)"></button>
+            </div>
+
+              <span class="copy-wrapper date">
+                <span class='select-all'>2018-05-13 &ndash; Present</span>
+                <button class="copy-btn" data-copy-text="2018-05-13 - Present"></button>
+              </span>
+
+              <div class="copy-wrapper description">
+                <div class='select-all'>*Deno* is a runtime for JavaScript and TypeScript that is based on the V8 JavaScript engine and the Rust programming language. It was created by **Ryan Dahl**, original creator of Node.js, and is focused on productivity. It was announced by Dahl in 2018 during his talk &quot;*10 Things I Regret About Node.js*&quot;.</div>
+                <button class="copy-btn" data-copy-text="*Deno* is a runtime for JavaScript and TypeScript that is based on the V8 JavaScript engine and the Rust programming language. It was created by **Ryan Dahl**, original creator of Node.js, and is focused on productivity. It was announced by Dahl in 2018 during his talk "*10 Things I Regret About Node.js*"."></button>
+              </div>
+
+              <div class="copy-wrapper highlights">
+                <div class="select-all">
+                  <ul class='highlights'>
+                      <li>Vitae tempus quam pellentesque</li>
+                      <li>Dui accumsan sit amet nulla</li>
+                      <li>Ultrices vitae auctor eu augue</li>
+                      <li>Scelerisque felis imperdiet</li>
+                      <li>Pellentesque dignissim enim sit</li>
+                  </ul>
+                </div>
+                <button class="copy-btn" data-copy-text="Vitae tempus quam pellentesque Dui accumsan sit amet nulla Ultrices vitae auctor eu augue Scelerisque felis imperdiet Pellentesque dignissim enim sit "></button>
+              </div>
+
+          </div>
+          <div class='separator'></div>
+          <div class='projectBlock'>
+
+            <div class="copy-wrapper">
+                <a href='https://nodejs.org/'>
+                  <span class='select-all normal-weight'>Node.js <em>(https://nodejs.org/)</em></span>
+                </a>
+              <button class="copy-btn" data-copy-text="Node.js (https://nodejs.org/)"></button>
+            </div>
+
+              <span class="copy-wrapper date">
+                <span class='select-all'>2011-08-26 &ndash; 2018-05-12</span>
+                <button class="copy-btn" data-copy-text="2011-08-26 - 2018-05-12"></button>
+              </span>
+
+              <div class="copy-wrapper description">
+                <div class='select-all'>*Node.js* is an open-source, cross-platform, back-end JavaScript runtime environment that executes JavaScript code outside a web browser.</div>
+                <button class="copy-btn" data-copy-text="*Node.js* is an open-source, cross-platform, back-end JavaScript runtime environment that executes JavaScript code outside a web browser."></button>
+              </div>
+
+              <div class="copy-wrapper highlights">
+                <div class="select-all">
+                  <ul class='highlights'>
+                      <li>Commodo elit at imperdiet dui</li>
+                      <li>Id volutpat lacus laoreet non</li>
+                      <li>Accumsan lacus vel facilisis</li>
+                  </ul>
+                </div>
+                <button class="copy-btn" data-copy-text="Commodo elit at imperdiet dui Id volutpat lacus laoreet non Accumsan lacus vel facilisis "></button>
+              </div>
+
+          </div>
+          
+      </div>
+    </div>
+
+
+    <div class='education'>
+      <div class='sectionName'>
+        <div class='line-connected'>
+          <span>EDUCATION</span><span class='line'></span>
+        </div>
+      </div>
+      <div class='sectionContent'>
+          <div class='educationBlock'>
+
+            <div class="copy-wrapper">
+              <span class='select-all title'>
+                    <a href='https://www.stanford.edu/'>University of Stanford</a>
+              </span>
+              <button class="copy-btn" data-copy-text="University of Stanford (https://www.stanford.edu/)"></button>
+            </div>
+
+              <span class="copy-wrapper date">
+                <span class='select-all'>Aug. 2008 &ndash; Jan. 2012</span>
+                <button class="copy-btn" data-copy-text="Aug. 2008 - Jan. 2012"></button>
+              </span>
+
+              <div class="copy-wrapper degree">
+                <span class='select-all'><em>Master, Computer Science</em></span>
+                <button class="copy-btn" data-copy-text="Master, Computer Science"></button>
+              </div>
+
+
+
+
+          </div>
+          <div class='separator'></div>
+          <div class='educationBlock'>
+
+            <div class="copy-wrapper">
+              <span class='select-all title'>
+                    <a href='https://www.ou.edu/'>University of Oklahoma</a>
+              </span>
+              <button class="copy-btn" data-copy-text="University of Oklahoma (https://www.ou.edu/)"></button>
+            </div>
+
+              <span class="copy-wrapper date">
+                <span class='select-all'>Aug. 2004 &ndash; Jan. 2008</span>
+                <button class="copy-btn" data-copy-text="Aug. 2004 - Jan. 2008"></button>
+              </span>
+
+              <div class="copy-wrapper degree">
+                <span class='select-all'><em>Bachelor, Information Technology</em></span>
+                <button class="copy-btn" data-copy-text="Bachelor, Information Technology"></button>
+              </div>
+
+
+
+
+          </div>
+          
+      </div>
+    </div>
+
+    <div class='publications'>
+      <div class='sectionName'>
+        <span>PUBLICATIONS</span>
+      </div>
+      <div class='sectionLine'></div>
+      <div class='sectionContent'>
+          <div class='publicationBlock'>
+
+            <div class="copy-wrapper">
+              <span class='select-all title'>
+                  Chasing the Higgs Boson, The New York Times
+              </span>
+              <button class="copy-btn" data-copy-text="Chasing the Higgs Boson , The New York Times"></button>
+            </div>
+
+              <span class="copy-wrapper date">
+                <span class='select-all releaseDate'>2013-03-04</span>
+                <button class="copy-btn" data-copy-text="2013-03-04"></button>
+              </span>
+
+
+          </div>
+          <div class='separator'></div>
+          <div class='publicationBlock'>
+
+            <div class="copy-wrapper">
+              <span class='select-all title'>
+                  Clean Code: A Handbook of Agile Software Craftsmanship, Pearson
+              </span>
+              <button class="copy-btn" data-copy-text="Clean Code: A Handbook of Agile Software Craftsmanship , Pearson"></button>
+            </div>
+
+              <span class="copy-wrapper date">
+                <span class='select-all releaseDate'>2008-08-01</span>
+                <button class="copy-btn" data-copy-text="2008-08-01"></button>
+              </span>
+
+
+          </div>
+          
+      </div>
+    </div>
+
+    <div class='awards'>
+      <div class='sectionName'>
+        <span>AWARDS</span>
+      </div>
+      <div class='sectionLine'></div>
+      <div class='sectionContent'>
+          <div class='awardBlock'>
+
+            <div class="copy-wrapper">
+              <span class='select-all title'>
+                Website of the day, Awwward
+              </span>
+              <button class="copy-btn" data-copy-text="Website of the day, Awwward"></button>
+            </div>
+
+
+
+          </div>
+          <div class='separator'></div>
+          <div class='awardBlock'>
+
+            <div class="copy-wrapper">
+              <span class='select-all title'>
+                Java Champion, Oracle
+              </span>
+              <button class="copy-btn" data-copy-text="Java Champion, Oracle"></button>
+            </div>
+
+
+
+          </div>
+          
+      </div>
+    </div>
+
+    <div class='volunteer'>
+      <div class='sectionName'>
+        <span>VOLUNTEERING</span>
+      </div>
+      <div class='sectionLine'></div>
+      <div class='sectionContent'>
+          <div class='volunteerBlock'>
+
+            <div class="copy-wrapper">
+              <span class='select-all title'>
+                Animal Refuge
+              </span>
+              <button class="copy-btn" data-copy-text="Animal Refuge"></button>
+            </div>
+
+              <div class="copy-wrapper date">
+                <span class='select-all'>
+                  2012-10-11 &ndash; 2014-12-24
+                </span>
+                <button class="copy-btn" data-copy-text="2012-10-11 &ndash; 2014-12-24"></button>
+              </div>
+
+              <div class="copy-wrapper position">
+                <span class='select-all'><strong>Supervisor</strong></span>
+                <button class="copy-btn" data-copy-text="Supervisor"></button>
+              </div>
+
+              <div class="copy-wrapper summary">
+                <div class='select-all'>Nulla sit amet velit ac turpis interdum consectetur eget vitae ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Etiam pharetra diam et tortor bibendum laoreet.</div>
+                <button class="copy-btn" data-copy-text="Nulla sit amet velit ac turpis interdum consectetur eget vitae ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Etiam pharetra diam et tortor bibendum laoreet."></button>
+              </div>
+
+              <div class="copy-wrapper highlights">
+                <div class='select-all'>
+                  <ul class='highlights'>
+                      <li>Maecenas at dictum sem</li>
+                      <li>Ut ac ex ac ipsum commodo</li>
+                      <li>Pellentesque vitae sed dolor</li>
+                      <li>Aliquam ut lectus ac lacus ultrices</li>
+                  </ul>
+                </div>
+                <button class="copy-btn" data-copy-text="Maecenas at dictum sem Ut ac ex ac ipsum commodo Pellentesque vitae sed dolor Aliquam ut lectus ac lacus ultrices "></button>
+              </div>
+
+          </div>
+          <div class='separator'></div>
+          <div class='volunteerBlock'>
+
+            <div class="copy-wrapper">
+              <span class='select-all title'>
+                Red cross
+              </span>
+              <button class="copy-btn" data-copy-text="Red cross"></button>
+            </div>
+
+              <div class="copy-wrapper date">
+                <span class='select-all'>
+                  2011-01-16 &ndash; 2012-10-10
+                </span>
+                <button class="copy-btn" data-copy-text="2011-01-16 &ndash; 2012-10-10"></button>
+              </div>
+
+              <div class="copy-wrapper position">
+                <span class='select-all'><strong>Math professor</strong></span>
+                <button class="copy-btn" data-copy-text="Math professor"></button>
+              </div>
+
+              <div class="copy-wrapper summary">
+                <div class='select-all'>Proin id justo pulvinar, imperdiet eros ac, iaculis nunc. Donec dignissim leo volutpat, cursus arcu vel, dapibus risus. Nam ut volutpat est. In fringilla commodo pretium. Vestibulum efficitur pellentesque ex. Nulla dictum, mauris sit amet mattis pharetra, purus ipsum commodo ex, a molestie metus augue sit amet justo.</div>
+                <button class="copy-btn" data-copy-text="Proin id justo pulvinar, imperdiet eros ac, iaculis nunc. Donec dignissim leo volutpat, cursus arcu vel, dapibus risus. Nam ut volutpat est. In fringilla commodo pretium. Vestibulum efficitur pellentesque ex. Nulla dictum, mauris sit amet mattis pharetra, purus ipsum commodo ex, a molestie metus augue sit amet justo."></button>
+              </div>
+
+
+          </div>
+          
+      </div>
+    </div>
+
+  <div class='certificates'>
+    <div class='sectionName'>
+      <div class='line-connected'>
+        <span>CERTIFICATES, SKILLS, INTERESTS</span><span class='line'></span>
+      </div>
+    </div>
+    <div class='sectionContent'>
+
+        <div class='certificateBlock'>
+          <span class='title'>Certificates: </span>
+            <div class="copy-wrapper">
+              <span class='select-all name'>
+                <a href='https://www.your-badge.com'>AWS Certified Solutions
+
+Architect - Professional</a>
+              </span>
+              <button class="copy-btn" data-copy-text="AWS Certified Solutions
+
+Architect - Professional"></button>
+            </div>
+            <div class="copy-wrapper keywords">
+              <span class='select-all'>
+                (<a href='https://www.your-badge.com'>Amazon Web Services</a>)
+              </span>
+              <button class="copy-btn" data-copy-text="Amazon Web Services"></button>
+            </div>
+            <span>, </span>
+            <div class="copy-wrapper">
+              <span class='select-all name'>
+                <a href='https://www.your-badge.com'>Oracle Certified Professional
+
+Java SE 17 Developer</a>
+              </span>
+              <button class="copy-btn" data-copy-text="Oracle Certified Professional
+
+Java SE 17 Developer"></button>
+            </div>
+            <div class="copy-wrapper keywords">
+              <span class='select-all'>
+                (<a href='https://www.your-badge.com'>Oracle</a>)
+              </span>
+              <button class="copy-btn" data-copy-text="Oracle"></button>
+            </div>
+            <span>, </span>
+            <div class="copy-wrapper">
+              <span class='select-all name'>
+                <a href='https://www.your-badge.com'>CCNA Routing and Switching</a>
+              </span>
+              <button class="copy-btn" data-copy-text="CCNA Routing and Switching"></button>
+            </div>
+            <div class="copy-wrapper keywords">
+              <span class='select-all'>
+                (<a href='https://www.your-badge.com'>Cisco</a>)
+              </span>
+              <button class="copy-btn" data-copy-text="Cisco"></button>
+            </div>
+            
+        </div>
+
+        <div class='skillBlock'>
+          <span class='title'>Other Skills: </span>
+            <div class="copy-wrapper">
+              <span class='select-all name'>Languages</span>
+              <button class="copy-btn" data-copy-text="Languages"></button>
+            </div>
+              <div class="copy-wrapper keywords">
+                <span class='select-all'>
+                  (Java, Python, Javascript, Rust, Golang)
+                </span>
+                <button class="copy-btn" data-copy-text="Java Python Javascript Rust Golang "></button>
+              </div>
+            <span>, </span>
+            <div class="copy-wrapper">
+              <span class='select-all name'>Frameworks</span>
+              <button class="copy-btn" data-copy-text="Frameworks"></button>
+            </div>
+              <div class="copy-wrapper keywords">
+                <span class='select-all'>
+                  (Spring, Django, Express)
+                </span>
+                <button class="copy-btn" data-copy-text="Spring Django Express "></button>
+              </div>
+            <span>, </span>
+            <div class="copy-wrapper">
+              <span class='select-all name'>Tools</span>
+              <button class="copy-btn" data-copy-text="Tools"></button>
+            </div>
+              <div class="copy-wrapper keywords">
+                <span class='select-all'>
+                  (VS Code, Intellij IDEA)
+                </span>
+                <button class="copy-btn" data-copy-text="VS Code Intellij IDEA "></button>
+              </div>
+            <span>, </span>
+            <div class="copy-wrapper">
+              <span class='select-all name'>Technologies</span>
+              <button class="copy-btn" data-copy-text="Technologies"></button>
+            </div>
+              <div class="copy-wrapper keywords">
+                <span class='select-all'>
+                  (Docker, AWS)
+                </span>
+                <button class="copy-btn" data-copy-text="Docker AWS "></button>
+              </div>
+            <span>, </span>
+            <div class="copy-wrapper">
+              <span class='select-all name'>Other</span>
+              <button class="copy-btn" data-copy-text="Other"></button>
+            </div>
+              <div class="copy-wrapper keywords">
+                <span class='select-all'>
+                  (Open source, XP)
+                </span>
+                <button class="copy-btn" data-copy-text="Open source XP "></button>
+              </div>
+            
+        </div>
+
+        <div class='interestBlock'>
+          <span class='title'>Interests: </span>
+            <div class="copy-wrapper">
+              <span class='select-all name'>Pixelart</span>
+              <button class="copy-btn" data-copy-text="Pixelart"></button>
+            </div>
+            <span>, </span>
+            <div class="copy-wrapper">
+              <span class='select-all name'>Open Source</span>
+              <button class="copy-btn" data-copy-text="Open Source"></button>
+            </div>
+            <span>, </span>
+            <div class="copy-wrapper">
+              <span class='select-all name'>Gardening</span>
+              <button class="copy-btn" data-copy-text="Gardening"></button>
+            </div>
+            <span>, </span>
+            <div class="copy-wrapper">
+              <span class='select-all name'>Writing</span>
+              <button class="copy-btn" data-copy-text="Writing"></button>
+            </div>
+            
+        </div>
+
+    </div>
+  </div>
+
+  <div class='languages'>
+    <div class='sectionName'>
+      <span>LANGUAGES</span>
+    </div>
+    <div class='sectionLine'></div>
+    <div class='sectionContent'>
+      <div class='languageBlock'>
+        <span class="copy-wrapper">
+          <span class='select-all language'>English</span>
+          <button class="copy-btn" data-copy-text="English"></button>
+        </span>
+        <span class="copy-wrapper">
+          <span class='select-all fluency'><em>(Native)</em></span>
+          <button class="copy-btn" data-copy-text="Native"></button>
+        </span>
+        <span>,</span>
+        <span class="copy-wrapper">
+          <span class='select-all language'>Russian</span>
+          <button class="copy-btn" data-copy-text="Russian"></button>
+        </span>
+        <span class="copy-wrapper">
+          <span class='select-all fluency'><em>(Professional)</em></span>
+          <button class="copy-btn" data-copy-text="Professional"></button>
+        </span>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class='references'>
+    <div class='sectionName'>
+      <span>REFERENCES</span>
+    </div>
+    <div class='sectionLine'></div>
+    <div class='sectionContent'>
+      <div class='referenceBlock'>
+        <div class='blockHeader'>
+          <span class="copy-wrapper">
+            <span class='select-all title'>Robert C. Martin</span>
+            <button class="copy-btn" data-copy-text="Robert C. Martin"></button>
+          </span>
+        </div>
+        <div class="copy-wrapper reference">
+          <span class='select-all'>"Suspendisse a tristique massa. Curabitur sollicitudin volutpat urna, sed pretium justo tincidunt non."</span>
+          <button class="copy-btn" data-copy-text="Suspendisse a tristique massa. Curabitur sollicitudin volutpat urna, sed pretium justo tincidunt non."></button>
+        </div>
+      </div>
+      <div class='separator'></div>
+      <div class='referenceBlock'>
+        <div class='blockHeader'>
+          <span class="copy-wrapper">
+            <span class='select-all title'>Martin Fowler</span>
+            <button class="copy-btn" data-copy-text="Martin Fowler"></button>
+          </span>
+        </div>
+        <div class="copy-wrapper reference">
+          <span class='select-all'>"Integer luctus erat at sapien pharetra, nec elementum diam euismod. Maecenas condimentum eu nisi ut aliquet. Donec vitae ultricies risus. Donec commodo justo at odio cursus, nec mattis tellus dignissim."</span>
+          <button class="copy-btn" data-copy-text="Integer luctus erat at sapien pharetra, nec elementum diam euismod. Maecenas condimentum eu nisi ut aliquet. Donec vitae ultricies risus. Donec commodo justo at odio cursus, nec mattis tellus dignissim."></button>
+        </div>
+      </div>
+      <div class='separator'></div>
+      <div class='referenceBlock'>
+        <div class='blockHeader'>
+          <span class="copy-wrapper">
+            <span class='select-all title'>Elon Musk</span>
+            <button class="copy-btn" data-copy-text="Elon Musk"></button>
+          </span>
+        </div>
+        <div class="copy-wrapper reference">
+          <span class='select-all'>"Sed pretium urna orci, at mollis ante fermentum at. Donec sagittis risus hendrerit venenatis consequat."</span>
+          <button class="copy-btn" data-copy-text="Sed pretium urna orci, at mollis ante fermentum at. Donec sagittis risus hendrerit venenatis consequat."></button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+
+  <script>
+    const resumeContainer = document.querySelector('.resume');
+    const popupGlobal = resumeContainer.querySelector('.copy-popup-global');
+
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+      const wrapper = btn.closest('.copy-wrapper');
+      const box = wrapper.querySelector('.select-all');
+      const text = btn.dataset.copyText;
+      const field = btn.dataset.field || box.textContent.trim() || "Field";
+
+      // Show field name on hover
+      btn.addEventListener('mouseenter', () => {
+        popupGlobal.textContent = `Copy ${field}`;
+        popupGlobal.classList.add('show');
+      });
+
+      btn.addEventListener('mouseleave', () => {
+        popupGlobal.classList.remove('show');
+      });
+
+      // Click copies text
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        navigator.clipboard.writeText(text).then(() => {
+          popupGlobal.textContent = `Copied!`;
+          popupGlobal.classList.add('show');
+          setTimeout(() => popupGlobal.classList.remove('show'), 1500);
+        }).catch(err => console.error('Copy failed', err));
+      });
+
+      // Optional: click on box also copies
+      box.addEventListener('click', () => {
+        btn.click();
+      });
+    });
+
+  </script>
+
+	</body>
+</html>

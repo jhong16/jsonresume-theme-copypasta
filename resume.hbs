@@ -1,0 +1,699 @@
+<!doctype html>
+<html>
+	<head>
+
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width, user-scalable=no, minimal-ui'>
+
+  <title>{{resume.basics.name}}</title>
+
+	<style>
+	{{{css}}}
+	</style>
+
+	</head>
+	<body>
+
+	<div class='resume'>
+	{{#resume.basics}}
+    <div class="copy-popup-global"></div>
+    <div class='nameBlock'>
+      <span class="copy-wrapper">
+        <span class='select-all'>{{firstName}}</span>
+        <button class="copy-btn" data-copy-text="{{{firstName}}}"></button>
+      </span>
+      <span class="copy-wrapper">
+        <span class='select-all'>{{middleName}}</span>
+        <button class="copy-btn" data-copy-text="{{{middleName}}}"></button>
+      </span>
+      <span class="copy-wrapper">
+        <span class='select-all'>{{lastName}}</span>
+        <button class="copy-btn" data-copy-text="{{{lastName}}}"></button>
+      </span>
+
+      {{#if label}}
+      <div class="copy-wrapper">
+          <div class='line-connected'>
+            <div class="select-all">
+              <span class='label'>{{label}}</span><span class='line-soft'></span>
+            </div>
+          </div>
+        <button class="copy-btn" data-copy-text="{{{label}}}"></button>
+      </div>
+      {{/if}}
+    </div>
+
+
+    <div class='basicsBlock'>
+      <div class='contactBlock'>
+        {{!-- Email --}}
+        <span class="copy-wrapper">
+          <span class='select-all email'>{{email}}</span>
+          <button class="copy-btn" data-copy-text="{{{email}}}"></button>
+        </span>
+
+        {{#if phone}}
+          <span class='divider'>|</span>
+          {{!-- Phone --}}
+          <span class="copy-wrapper">
+            <span class='select-all phone'>{{phone}}</span>
+            <button class="copy-btn" data-copy-text="{{{phone}}}"></button>
+          </span>
+        {{/if}}
+
+        <span class='divider'>|</span>
+
+        {{!-- Location --}}
+        {{#location}}
+          <span class="copy-wrapper">
+            <span class='select-all'>
+              {{#if address}}{{address}}{{/if}}
+              {{#if city}}{{#if address}} • {{/if}}{{city}}{{/if}}
+              {{#if region}}{{#if city}}, {{/if}}{{region}}{{/if}}
+              {{#if postalCode}}{{postalCode}}{{/if}}
+            </span>
+            <button class="copy-btn" data-copy-text="{{{address}}}{{#if address}} {{/if}}{{{city}}}{{#if city}} {{/if}}{{{region}}}{{#if region}} {{/if}}{{{postalCode}}}"></button>
+          </span>
+        {{/location}}
+
+        <span class='divider'>|</span>
+
+        {{!-- Web Profiles --}}
+        {{#if profiles.length}}
+          {{#each profiles}}
+            {{#if url}}
+              <span class='url'>
+                <span class="copy-wrapper">
+                  <span>
+                    {{network}}
+                    <span class='select-all'>{{url}}</span>
+                    {{#if username}} ({{username}}){{/if}}
+                  </span>
+                  <button class="copy-btn" data-copy-text="{{{url}}}"></button>
+                </span>
+              </span>
+              {{#unless @last}}<span class='divider'>|</span>{{/unless}}
+            {{/if}}
+          {{/each}}
+        {{/if}}
+    </div>
+	{{/resume.basics}}
+    
+  <div class='sectionLineSoft'></div>
+
+  {{#if resume.basics.summary}}
+    <div class='summaryBlock'>
+      <div class='sectionName'>
+        <span>SUMMARY</span>
+      </div>
+      <div class='sectionLine'></div>
+      <div class='sectionContent'>
+        <span class="copy-wrapper">
+          <div class='select-all'>{{resume.basics.summary}}</div>
+          <button class="copy-btn" data-copy-text="{{{resume.basics.summary}}}"></button>
+        </span>
+      </div>
+    </div>
+  {{/if}}
+
+
+	{{#if resume.work.length}}
+  <div class='workBlock'>
+    <div class='sectionName'>
+      <div class='line-connected'>
+        <span>EXPERIENCE</span><span class='line'></span>
+      </div>
+    </div>
+
+    <div class='sectionContent'>
+      {{#each resume.work}}
+			<div class="jobBlock">
+	      <div class='blockHeader'>
+          <div class='line-connected'>
+            {{!-- Company --}}
+            {{#if name}}
+              <div class="copy-wrapper">
+                <span class='select-all title'>{{name}}</span>
+                <button class="copy-btn" data-copy-text="{{{name}}}"></button>
+              </div>
+            {{else}}
+              <span class='title'>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            {{/if}}
+
+            <span class='line-soft'></span>
+
+            {{!-- Dates --}}
+            {{#if startDate}}
+              <span class="copy-wrapper date">
+                <span class='select-all'>
+                  {{startDate}} &ndash; {{#if endDate}}{{endDate}}{{else}}Present{{/if}}
+                </span>
+                <button class="copy-btn" data-copy-text="{{{startDate}}} - {{{endDate}}}"></button>
+              </span>
+            {{/if}}
+          </div>
+            
+          {{!-- Subcompany --}}
+          {{#if subname}}
+            <div class="copy-wrapper">
+              <div class='select-all summary'>{{{subname}}}</div>
+              <button class="copy-btn" data-copy-text="{{{subname}}}"></button>
+            </div>
+          {{/if}}
+
+          {{!-- Position --}}
+          <span class='subtitle'>
+            {{#if position}}
+              <span class="copy-wrapper">
+                <span class='select-all'>{{position}}</span>
+                <button class="copy-btn" data-copy-text="{{{position}}}"></button>
+              </span>
+            {{/if}}
+          </span>
+
+          {{!-- Location --}}
+          <span class='location'>
+            {{#if location}}
+              <span class="copy-wrapper">
+                <span class='select-all'>{{location}}</span>
+                <button class="copy-btn" data-copy-text="{{{location}}}"></button>
+              </span>
+            {{/if}}
+          </span>
+        
+          {{!-- Summary --}}
+          {{#if summary}}
+            <div class="copy-wrapper">
+              <div class='select-all summary'>{{{summary}}}</div>
+              <button class="copy-btn" data-copy-text="{{{summary}}}"></button>
+            </div>
+          {{/if}}
+
+          {{!-- Highlights --}}
+          {{#if highlights.length}}
+            <div class="copy-wrapper">
+              <div class="select-all">
+                <ul class='highlights'>
+                  {{#each highlights}}
+                    <li>{{{highlight}}}</li>
+                    {{#if keyResults.length}}
+                      <ul>
+                        {{#each keyResults}}
+                          <li>{{{.}}}</li>
+                        {{/each}}
+                      </ul>
+                    {{/if}}
+                  {{/each}}
+                </ul>
+              </div>
+              <button class="copy-btn" data-copy-text="{{#each highlights}}{{{highlight}}} {{/each}}"></button>
+            </div>
+          {{/if}}
+
+          {{#unless @last}}
+            <div class='separator'></div>
+          {{/unless}}
+
+			</div>
+      {{/each}}
+    </div>
+  </div>
+	{{/if}}
+
+  {{#if resume.projects.length}}
+    <div class='projects'>
+      <div class='sectionName'>
+        <span>PROJECTS</span>
+      </div>
+      <div class='sectionLine'></div>
+      <div class='sectionContent'>
+        {{#each resume.projects}}
+          <div class='projectBlock'>
+
+            {{!-- Project Name / URL --}}
+            <div class="copy-wrapper">
+              {{#if url}}
+                <a href='{{url}}'>
+                  <span class='select-all normal-weight'>{{name}} <em>({{url}})</em></span>
+                </a>
+              {{else}}
+                <span class='select-all'>{{name}}</span>
+              {{/if}}
+              <button class="copy-btn" data-copy-text="{{#if url}}{{name}} ({{url}}){{else}}{{name}}{{/if}}"></button>
+            </div>
+
+            {{!-- Dates --}}
+            {{#if startDate}}
+              <span class="copy-wrapper date">
+                <span class='select-all'>{{startDate}} &ndash; {{#if endDate}}{{endDate}}{{else}}Present{{/if}}</span>
+                <button class="copy-btn" data-copy-text="{{startDate}} - {{#if endDate}}{{endDate}}{{else}}Present{{/if}}"></button>
+              </span>
+            {{/if}}
+
+            {{!-- Description --}}
+            {{#if description}}
+              <div class="copy-wrapper description">
+                <div class='select-all'>{{description}}</div>
+                <button class="copy-btn" data-copy-text="{{{description}}}"></button>
+              </div>
+            {{/if}}
+
+            {{!-- Highlights --}}
+            {{#if highlights.length}}
+              <div class="copy-wrapper highlights">
+                <div class="select-all">
+                  <ul class='highlights'>
+                    {{#each highlights}}
+                      <li>{{.}}</li>
+                    {{/each}}
+                  </ul>
+                </div>
+                <button class="copy-btn" data-copy-text="{{#each highlights}}{{.}} {{/each}}"></button>
+              </div>
+            {{/if}}
+
+          </div>
+          {{#unless @last}}<div class='separator'></div>{{/unless}}
+        {{/each}}
+      </div>
+    </div>
+  {{/if}}
+
+
+  {{#if resume.education.length}}
+    <div class='education'>
+      <div class='sectionName'>
+        <div class='line-connected'>
+          <span>EDUCATION</span><span class='line'></span>
+        </div>
+      </div>
+      <div class='sectionContent'>
+        {{#each resume.education}}
+          <div class='educationBlock'>
+
+            {{!-- Institution / URL / Location --}}
+            <div class="copy-wrapper">
+              <span class='select-all title'>
+                {{#if institution}}
+                  {{#if url}}
+                    <a href='{{url}}'>{{institution}}{{#if location}}, {{location}}{{/if}}</a>
+                  {{else}}
+                    {{institution}}{{#if location}}, {{location}}{{/if}}
+                  {{/if}}
+                {{/if}}
+              </span>
+              <button class="copy-btn" data-copy-text="{{#if url}}{{institution}} ({{url}}){{else}}{{institution}}{{/if}}{{#if location}}, {{location}}{{/if}}"></button>
+            </div>
+
+            {{!-- Dates --}}
+            {{#if startDate}}
+              <span class="copy-wrapper date">
+                <span class='select-all'>{{startDate}} &ndash; {{#if endDate}}{{endDate}}{{else}}Present{{/if}}</span>
+                <button class="copy-btn" data-copy-text="{{startDate}} - {{#if endDate}}{{endDate}}{{else}}Present{{/if}}"></button>
+              </span>
+            {{/if}}
+
+            {{!-- Degree / Study Type --}}
+            {{#if studyType}}
+              <div class="copy-wrapper degree">
+                <span class='select-all'><em>{{studyType}}{{#if area}}, {{area}}{{/if}}</em></span>
+                <button class="copy-btn" data-copy-text="{{studyType}}{{#if area}}, {{area}}{{/if}}"></button>
+              </div>
+            {{/if}}
+
+            {{!-- GPA --}}
+            {{#if gpa}}
+              <div class="copy-wrapper gpa">
+                <span class='select-all'><strong>GPA:</strong> {{gpa}}{{#if gpaMax}} / {{gpaMax}}{{/if}}{{#if summary}} ({{summary}}){{/if}}</span>
+                <button class="copy-btn" data-copy-text="GPA: {{gpa}}{{#if gpaMax}} / {{gpaMax}}{{/if}}{{#if summary}} ({{summary}}){{/if}}"></button>
+              </div>
+            {{/if}}
+
+            {{!-- Awards --}}
+            {{#if awards}}
+              <div class="copy-wrapper awards">
+                <span class='select-all'><strong>Awards:</strong> {{awards}}</span>
+                <button class="copy-btn" data-copy-text="Awards: {{awards}}"></button>
+              </div>
+            {{/if}}
+
+            {{!-- Courses --}}
+            {{#if courses.length}}
+              <div class='coursesBlock'>
+                {{#each courses}}
+                  <div class="copy-wrapper course-column">
+                    <ul class='coursesList select-all'>
+                      {{#each .}}
+                        <li class='course'>{{.}}</li>
+                      {{/each}}
+                    </ul>
+                    <button class="copy-btn" data-copy-text="{{#each .}}{{.}} {{/each}}"></button>
+                  </div>
+                {{/each}}
+              </div>
+            {{/if}}
+
+          </div>
+          {{#unless @last}}<div class='separator'></div>{{/unless}}
+        {{/each}}
+      </div>
+    </div>
+  {{/if}}
+
+  {{#if resume.publications.length}}
+    <div class='publications'>
+      <div class='sectionName'>
+        <span>PUBLICATIONS</span>
+      </div>
+      <div class='sectionLine'></div>
+      <div class='sectionContent'>
+        {{#each resume.publications}}
+          <div class='publicationBlock'>
+
+            {{!-- Publication Name / Publisher / Website --}}
+            <div class="copy-wrapper">
+              <span class='select-all title'>
+                {{#if website}}
+                  <a href='{{website}}'>
+                    {{#if name}}{{name}}{{/if}}{{#if publisher}}, {{publisher}}{{/if}}
+                  </a>
+                {{else}}
+                  {{#if name}}{{name}}{{/if}}{{#if publisher}}, {{publisher}}{{/if}}
+                {{/if}}
+              </span>
+              <button class="copy-btn" data-copy-text="{{#if website}}{{name}} {{#if publisher}}, {{publisher}}{{/if}} ({{website}}){{else}}{{name}} {{#if publisher}}, {{publisher}}{{/if}}{{/if}}"></button>
+            </div>
+
+            {{!-- Release Date --}}
+            {{#if releaseDate}}
+              <span class="copy-wrapper date">
+                <span class='select-all releaseDate'>{{releaseDate}}</span>
+                <button class="copy-btn" data-copy-text="{{releaseDate}}"></button>
+              </span>
+            {{/if}}
+
+            {{!-- Highlights --}}
+            {{#if highlights.length}}
+              <div class="copy-wrapper highlights">
+                <div class="select-all">
+                  <ul class='highlights'>
+                    {{#each highlights}}
+                      <li>{{.}}</li>
+                    {{/each}}
+                  </ul>
+                </div>
+                <button class="copy-btn" data-copy-text="{{#each highlights}}{{.}} {{/each}}"></button>
+              </div>
+            {{/if}}
+
+          </div>
+          {{#unless @last}}<div class='separator'></div>{{/unless}}
+        {{/each}}
+      </div>
+    </div>
+  {{/if}}
+
+  {{#if resume.awards.length}}
+    <div class='awards'>
+      <div class='sectionName'>
+        <span>AWARDS</span>
+      </div>
+      <div class='sectionLine'></div>
+      <div class='sectionContent'>
+        {{#each resume.awards}}
+          <div class='awardBlock'>
+
+            {{!-- Title & Awarder --}}
+            <div class="copy-wrapper">
+              <span class='select-all title'>
+                {{#if title}}{{title}}{{/if}}{{#if awarder}}, {{awarder}}{{/if}}
+              </span>
+              <button class="copy-btn" data-copy-text="{{#if title}}{{title}}{{/if}}{{#if awarder}}, {{awarder}}{{/if}}"></button>
+            </div>
+
+            {{!-- Date --}}
+            {{#if date}}
+              <div class="copy-wrapper date">
+                <span class='select-all'>{{date}}</span>
+                <button class="copy-btn" data-copy-text="{{date}}"></button>
+              </div>
+            {{/if}}
+
+            {{!-- Highlights --}}
+            {{#if highlights.length}}
+              <div class="copy-wrapper highlights">
+                <div class='select-all'>
+                  <ul class='highlights'>
+                    {{#each highlights}}
+                      <li>{{.}}</li>
+                    {{/each}}
+                  </ul>
+                </div>
+                <button class="copy-btn" data-copy-text="{{#each highlights}}{{.}} {{/each}}"></button>
+              </div>
+            {{/if}}
+
+          </div>
+          {{#unless @last}}<div class='separator'></div>{{/unless}}
+        {{/each}}
+      </div>
+    </div>
+  {{/if}}
+
+  {{#if resume.volunteer.length}}
+    <div class='volunteer'>
+      <div class='sectionName'>
+        <span>VOLUNTEERING</span>
+      </div>
+      <div class='sectionLine'></div>
+      <div class='sectionContent'>
+        {{#each resume.volunteer}}
+          <div class='volunteerBlock'>
+
+            {{!-- Organization / Website --}}
+            <div class="copy-wrapper">
+              <span class='select-all title'>
+                {{#if website}}<a href='{{website}}'>{{#if organization}}{{organization}}{{/if}}</a>{{else}}{{#if organization}}{{organization}}{{/if}}{{/if}}
+              </span>
+              <button class="copy-btn" data-copy-text="{{#if organization}}{{organization}}{{/if}}{{#if website}} ({{website}}){{/if}}"></button>
+            </div>
+
+            {{!-- Dates --}}
+            {{#if startDate}}
+              <div class="copy-wrapper date">
+                <span class='select-all'>
+                  {{startDate}} &ndash; {{#if endDate}}{{endDate}}{{else}}Present{{/if}}
+                </span>
+                <button class="copy-btn" data-copy-text="{{startDate}} &ndash; {{#if endDate}}{{endDate}}{{else}}Present{{/if}}"></button>
+              </div>
+            {{/if}}
+
+            {{!-- Position --}}
+            {{#if position}}
+              <div class="copy-wrapper position">
+                <span class='select-all'><strong>{{position}}</strong></span>
+                <button class="copy-btn" data-copy-text="{{position}}"></button>
+              </div>
+            {{/if}}
+
+            {{!-- Summary --}}
+            {{#if summary}}
+              <div class="copy-wrapper summary">
+                <div class='select-all'>{{{summary}}}</div>
+                <button class="copy-btn" data-copy-text="{{summary}}"></button>
+              </div>
+            {{/if}}
+
+            {{!-- Highlights --}}
+            {{#if highlights.length}}
+              <div class="copy-wrapper highlights">
+                <div class='select-all'>
+                  <ul class='highlights'>
+                    {{#each highlights}}
+                      <li>{{.}}</li>
+                    {{/each}}
+                  </ul>
+                </div>
+                <button class="copy-btn" data-copy-text="{{#each highlights}}{{.}} {{/each}}"></button>
+              </div>
+            {{/if}}
+
+          </div>
+          {{#unless @last}}<div class='separator'></div>{{/unless}}
+        {{/each}}
+      </div>
+    </div>
+  {{/if}}
+
+  <div class='certificates'>
+    <div class='sectionName'>
+      <div class='line-connected'>
+        <span>{{sectionList resume (array "certificates" "skills" "interests")}}</span><span class='line'></span>
+      </div>
+    </div>
+    <div class='sectionContent'>
+
+      {{!-- Certificates --}}
+      {{#if resume.certificates.length}}
+        <div class='certificateBlock'>
+          <span class='title'>Certificates: </span>
+          {{#each resume.certificates}}
+            <div class="copy-wrapper">
+              <span class='select-all name'>
+                {{#if url}}<a href='{{url}}'>{{name}}</a>{{else}}{{name}}{{/if}}
+              </span>
+              <button class="copy-btn" data-copy-text="{{name}}"></button>
+            </div>
+            <div class="copy-wrapper keywords">
+              <span class='select-all'>
+                ({{#if url}}<a href='{{url}}'>{{issuer}}</a>{{else}}{{issuer}}{{/if}})
+              </span>
+              <button class="copy-btn" data-copy-text="{{issuer}}"></button>
+            </div>
+            {{#unless @last}}<span>, </span>{{/unless}}
+          {{/each}}
+        </div>
+      {{/if}}  
+
+      {{!-- Skills --}}
+      {{#if resume.skills.length}}
+        <div class='skillBlock'>
+          <span class='title'>Other Skills: </span>
+          {{#each resume.skills}}
+            <div class="copy-wrapper">
+              <span class='select-all name'>{{name}}</span>
+              <button class="copy-btn" data-copy-text="{{name}}"></button>
+            </div>
+            {{#if keywords.length}}
+              <div class="copy-wrapper keywords">
+                <span class='select-all'>
+                  ({{#each keywords}}{{.}}{{#unless @last}}, {{/unless}}{{/each}})
+                </span>
+                <button class="copy-btn" data-copy-text="{{#each keywords}}{{.}} {{/each}}"></button>
+              </div>
+            {{/if}}
+            {{#unless @last}}<span>, </span>{{/unless}}
+          {{/each}}
+        </div>
+      {{/if}}
+
+      {{!-- Interests --}}
+      {{#if resume.interests.length}}
+        <div class='interestBlock'>
+          <span class='title'>Interests: </span>
+          {{#each resume.interests}}
+            <div class="copy-wrapper">
+              <span class='select-all name'>{{name}}</span>
+              <button class="copy-btn" data-copy-text="{{name}}"></button>
+            </div>
+            {{#if keywords.length}}
+              <div class="copy-wrapper keywords">
+                <span class='select-all'>
+                  ({{#each keywords}}{{.}}{{#unless @last}}, {{/unless}}{{/each}})
+                </span>
+                <button class="copy-btn" data-copy-text="{{#each keywords}}{{.}} {{/each}}"></button>
+              </div>
+            {{/if}}
+            {{#unless @last}}<span>, </span>{{/unless}}
+          {{/each}}
+        </div>
+      {{/if}}
+
+    </div>
+  </div>
+
+  {{#if resume.languages.length}}
+  <div class='languages'>
+    <div class='sectionName'>
+      <span>LANGUAGES</span>
+    </div>
+    <div class='sectionLine'></div>
+    <div class='sectionContent'>
+      <div class='languageBlock'>
+        {{#each resume.languages}}
+        <span class="copy-wrapper">
+          <span class='select-all language'>{{language}}</span>
+          <button class="copy-btn" data-copy-text="{{language}}"></button>
+        </span>
+        {{#if fluency}}
+        <span class="copy-wrapper">
+          <span class='select-all fluency'><em>({{fluency}})</em></span>
+          <button class="copy-btn" data-copy-text="{{fluency}}"></button>
+        </span>
+        {{/if}}
+        {{#unless @last}}<span>,</span>{{/unless}}
+        {{/each}}
+      </div>
+    </div>
+  </div>
+  {{/if}}
+
+  {{#if resume.references.length}}
+  <div class='references'>
+    <div class='sectionName'>
+      <span>REFERENCES</span>
+    </div>
+    <div class='sectionLine'></div>
+    <div class='sectionContent'>
+      {{#each resume.references}}
+      <div class='referenceBlock'>
+        <div class='blockHeader'>
+          <span class="copy-wrapper">
+            <span class='select-all title'>{{name}}</span>
+            <button class="copy-btn" data-copy-text="{{name}}"></button>
+          </span>
+        </div>
+        {{#if reference}}
+        <div class="copy-wrapper reference">
+          <span class='select-all'>"{{reference}}"</span>
+          <button class="copy-btn" data-copy-text="{{reference}}"></button>
+        </div>
+        {{/if}}
+      </div>
+      {{#unless @last}}<div class='separator'></div>{{/unless}}
+      {{/each}}
+    </div>
+  </div>
+  {{/if}}
+
+
+  <script>
+    const resumeContainer = document.querySelector('.resume');
+    const popupGlobal = resumeContainer.querySelector('.copy-popup-global');
+
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+      const wrapper = btn.closest('.copy-wrapper');
+      const box = wrapper.querySelector('.select-all');
+      const text = btn.dataset.copyText;
+      const field = btn.dataset.field || box.textContent.trim() || "Field";
+
+      // Show field name on hover
+      btn.addEventListener('mouseenter', () => {
+        popupGlobal.textContent = `Copy ${field}`;
+        popupGlobal.classList.add('show');
+      });
+
+      btn.addEventListener('mouseleave', () => {
+        popupGlobal.classList.remove('show');
+      });
+
+      // Click copies text
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        navigator.clipboard.writeText(text).then(() => {
+          popupGlobal.textContent = `Copied!`;
+          popupGlobal.classList.add('show');
+          setTimeout(() => popupGlobal.classList.remove('show'), 1500);
+        }).catch(err => console.error('Copy failed', err));
+      });
+
+      // Optional: click on box also copies
+      box.addEventListener('click', () => {
+        btn.click();
+      });
+    });
+
+  </script>
+
+	</body>
+</html>
