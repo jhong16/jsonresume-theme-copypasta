@@ -215,9 +215,8 @@ a:hover {
 
 .divider {
   display: inline-block;
-  width: 1px;
   height: 24px;     /* adjust this for length */
-  background-color: #999;
+  border-left: 1px solid #676767;
   margin: 0 8px;
   vertical-align: middle;
 }

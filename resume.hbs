@@ -53,7 +53,7 @@
         </span>
 
         {{#if phone}}
-          <span class='divider'>|</span>
+          <span class='divider'></span>
           {{!-- Phone --}}
           <span class="copy-wrapper">
             <span class='select-all phone'>{{phone}}</span>
@@ -61,7 +61,7 @@
           </span>
         {{/if}}
 
-        <span class='divider'>|</span>
+        <span class='divider'></span>
 
         {{!-- Location --}}
         {{#location}}
@@ -76,7 +76,7 @@
           </span>
         {{/location}}
 
-        <span class='divider'>|</span>
+        <span class='divider'></span>
 
         {{!-- Web Profiles --}}
         {{#if profiles.length}}
@@ -92,7 +92,7 @@
                   <button class="copy-btn" data-copy-text="{{{url}}}"></button>
                 </span>
               </span>
-              {{#unless @last}}<span class='divider'>|</span>{{/unless}}
+              {{#unless @last}}<span class='divider'></span>{{/unless}}
             {{/if}}
           {{/each}}
         {{/if}}
